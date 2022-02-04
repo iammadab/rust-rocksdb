@@ -100,6 +100,7 @@ impl<'db, DB> Transaction<'db, DB> {
     /// [`TryAgain`]: crate::ErrorKind::TryAgain
     /// [`Options::set_max_write_buffer_size_to_maintain`]: crate::Options::set_max_write_buffer_size_to_maintain
     pub fn commit(self) -> Result<(), Error> {
+        println!("about to commit transaction");
         unsafe {
             ffi_try!(ffi::rocksdb_transaction_commit(self.inner));
         }
