@@ -286,9 +286,6 @@ impl<T: ThreadMode> OptimisticTransactionDB<T> {
     }
 
     pub fn write(&self, batch: WriteBatchWithTransaction<true>) -> Result<(), Error> {
-        println!("disabled wal");
-        let mut wo = WriteOptions::new();
-        wo.disable_wal(true);
         self.write_opt(batch, &WriteOptions::default())
     }
 

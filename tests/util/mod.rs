@@ -17,7 +17,7 @@ impl DBPath {
             .tempdir()
             .expect("Failed to create temporary path for db.");
         let path = dir.path().join("db");
-        dbg!("Opened db at {}", path);
+        println!("Opened db at {:?}", path);
 
         DBPath { dir, path }
     }
@@ -26,7 +26,7 @@ impl DBPath {
 impl Drop for DBPath {
     fn drop(&mut self) {
         let opts = Options::default();
-        dbg!("Closed db at {}", path);
+        println!("Closed db at {}", path);
         DB::destroy(&opts, &self.path).expect("Failed to destroy temporary DB");
     }
 }
