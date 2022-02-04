@@ -103,6 +103,7 @@ impl<'db, DB> Transaction<'db, DB> {
         unsafe {
             ffi_try!(ffi::rocksdb_transaction_commit(self.inner));
         }
+        println!("committed transaction");
         Ok(())
     }
 
