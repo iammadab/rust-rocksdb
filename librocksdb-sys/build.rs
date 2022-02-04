@@ -44,6 +44,7 @@ fn bindgen_rocksdb() {
         .expect("unable to generate rocksdb bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+    println!("Out path is {:?}", out_path.clone());
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("unable to write rocksdb bindings");
